@@ -24,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }, 
       as: 'user' 
-    })
-  }
+    });
+  };
 
   return Course;
 };

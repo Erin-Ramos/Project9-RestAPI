@@ -7,10 +7,54 @@ module.exports = (sequelize, DataTypes) => {
 
   }
   User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    emailAddress: DataTypes.STRING,
-    password: DataTypes.STRING
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'A valid input is required'
+        },
+        notEmpty: {
+          msg: 'A first name is required'
+        },
+      },
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'A valid input is required'
+        },
+        notEmpty: {
+          msg: 'A last name is required'
+        },
+      },
+    },
+    emailAddress: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'A valid input is required'
+        },
+        notEmpty: {
+          msg: 'An email address is required'
+        },
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false, 
+      validate: {
+        notNull: {
+          msg: 'A valid input is required'
+        },
+        notEmpty: {
+          msg: 'A password is required'
+        },
+      },
+    }
   }, {
     sequelize,
     modelName: 'User',
@@ -21,10 +65,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: {
         name: 'userId',
         allowNull: false
-      }, 
+      },
       as: 'courses'
-    })
-  }
+    });
+  };
 
   return User;
 };
