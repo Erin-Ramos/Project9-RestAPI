@@ -54,6 +54,7 @@ router.get('/courses', asyncHandler(async (req, res) => {
             as: 'user',
         }
     });
+
     res.status(200).json(courses);
 }));
 
